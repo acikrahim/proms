@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <!-- <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24"
+                class="d-inline-block align-text-top"> -->
+            Property Management System
+        </a>
+
+        <ng-container *ngIf="!compactNavbar">
+            <ul class="nav">
+                <app-translation></app-translation>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['./auth/login']">Auth</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['./admin']">Admin</a>
+                </li>
+            </ul>
+        </ng-container>
+
+        <ng-container *ngIf="compactNavbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-2">
+                        <app-translation></app-translation>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</nav>
+<router-outlet></router-outlet>

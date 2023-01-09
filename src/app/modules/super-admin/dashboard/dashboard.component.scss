@@ -1,0 +1,19 @@
+.dashboard {
+    margin: 0;
+    max-width: 100%;
+    .number-card {
+        border: 2px solid;
+        border-radius: 24px;
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: contain;
+        .card-top {
+            line-height: 90%;
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 0;
+            margin-right: -.8rem;
+            letter-spacing: .8rem;
+        }
+    }
+}

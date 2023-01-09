@@ -1,0 +1,26 @@
+{
+    "general": {
+        "language": "Language",
+        "back": "Back",
+        "send": "Send",
+        "submit": "Submit",
+        "close": "Close"
+    },
+    "validation": {
+        "required": "This field is mandatory.",
+        "pattern": "This is not a correct pattern."
+    },
+    "auth": {
+        "login": "Login",
+        "enter_username_or_email": "Enter username or email",
+        "password": "Password",
+        "current_password": "Current Password",
+        "confirm_password": "Confirm Password",
+        "register": "Registration",
+        "username": "Username",
+        "email": "Email",
+        "reset_password": "Reset Password",
+        "forgot_password": "Forgot Password",
+        "change_password": "Change Password"
+    }
+}

@@ -1,0 +1,9 @@
+<div *ngIf="FormControl.invalid && (FormControl.dirty || FormControl.touched)">
+    <div class="form-text text-danger" *ngIf="FormControl.errors?.['required']">
+        {{ 'validation.required' | translate }}
+    </div>
+
+    <div class="form-text text-danger" *ngIf="FormControl.errors?.['pattern']">
+        {{ 'validation.pattern' | translate }}
+    </div>
+</div>

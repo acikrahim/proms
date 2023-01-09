@@ -1,0 +1,30 @@
+<div class="card text-right">
+    <div class="card-header p-3">
+        {{ 'auth.register' | translate }}
+    </div>
+    <div class="card-body p-4">
+        <form [formGroup]="registerForm" (submit)="sendRegistration()">
+            <div class="mt-2 mb-4">
+                <input type="text" class="form-control" formControlName="username" placeholder="{{ 'auth.username' | translate }}">
+                <validation-message [FormControl]="registerForm.controls['username']"></validation-message>
+            </div>
+            <div class="mb-4">
+                <input type="email" class="form-control" formControlName="email" placeholder="{{ 'auth.email' | translate }}">
+                <validation-message [FormControl]="registerForm.controls['email']"></validation-message>
+            </div>
+            <div class="mb-4">
+                <div class="input-group">
+                    <input type="password" class="form-control" #password formControlName="password" placeholder="{{ 'auth.password' | translate }}">
+                    <div class="input-group-addon ml-auto d-flex align-items-center p-2 border rounded-end bg-light"
+                        (click)="password.getAttribute('type') == 'text' ? password.setAttribute('type', 'password') : password.setAttribute('type', 'text')">
+                        <i-feather name="{{password.getAttribute('type') == 'text' ? 'eye' : 'eye-off'}}"></i-feather>
+                    </div>
+                </div>
+                <validation-message [FormControl]="registerForm.controls['password']"></validation-message>
+            </div>
+
+            <button class="btn btn-primary float-end">{{ 'general.submit' | translate }}</button>
+        </form>
+    </div>
+    <div class="card-footer p-3" style="background-image: linear-gradient(to right, #ebebeb, #e0e0e0, #d4d4d4, #c9c9c9, #bebebe);"></div>
+</div>

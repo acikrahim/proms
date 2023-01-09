@@ -1,0 +1,58 @@
+<ng-template #successModal let-modal>
+    <div class="modal-header success py-2 px-3">
+        <h5 class="modal-title">{{ modalContent.modalTitle }}</h5>
+    </div>
+    <div class="modal-body py-2 px-3 mb-2">
+        <div class="my-2">
+            <p>{{ modalContent.modalBody }}</p>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-12 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-outline-dark btn-sm w-100" (click)="modal.dismiss('Save click')">{{ 'general.close' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer success"></div>
+</ng-template>
+
+<ng-template #errorModal let-modal>
+    <div class="modal-header error py-2 px-3">
+        <h5 class="modal-title">{{ modalContent.modalTitle }}</h5>
+    </div>
+    <div class="modal-body py-2 px-3 mb-2">
+        <div class="my-2">
+            <p>{{ modalContent.modalBody }}</p>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-12 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-outline-dark btn-sm w-100" (click)="modal.close('Save click')">{{
+                    'general.close' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer error"></div>
+</ng-template>
+
+<ng-template #warningModal let-modal>
+    <div class="modal-header error py-2 px-3">
+        <h5 class="modal-title">{{ modalContent.modalTitle }}</h5>
+    </div>
+    <div class="modal-body py-2 px-3 mb-2">
+        <div class="my-2">
+            <p>{{ modalContent.modalBody }}</p>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-12 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-outline-dark btn-sm w-100" (click)="modal.dismiss(false)">{{
+                    'general.close' | translate }}</button>
+            </div>
+            <div class="col-12 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-outline-danger btn-sm w-100" (click)="modal.close(true)">Yes</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer error"></div>
+</ng-template>

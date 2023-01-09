@@ -1,0 +1,94 @@
+<div class="container dashboard">
+    <div class="section-no-bg text-start">
+        <h2 class="mb-0">Property</h2>
+    </div>
+    <div class="section-no-bg py-0 text-end">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#createProperty" (click)="createPropertyForm.reset()">
+            Add Property
+        </button>
+    </div>
+    <div class="section">
+        <div class="row">
+            <div *ngFor="let property of properties" class="col-12 col-md-12 col-lg-12 mb-4">
+                <div class="card property text-success" style="background-image: url('assets/img/svg/layers.svg');">
+                    <div class="card-body">
+                        <p class="property-name">{{property.name}}</p>
+                        <div class="row justify-content-end">
+                            <p class="col-10 property-info">
+                                Total Residence:
+                            </p>
+                            <p class="col-2 property-info">
+                                <strong>600 / 900</strong>
+                            </p>
+                        </div>
+                        <div class="row justify-content-end">
+                            <p class="col-10 property-info">
+                                Total Residence:
+                            </p>
+                            <p class="col-2 property-info">
+                                <strong>600 / 900</strong>
+                            </p>
+                        </div>
+                        <div>
+                            <i-feather name="edit" data-bs-toggle="modal" data-bs-target="#editProperty" class="property-icon" (click)="setEditProperty(property)"></i-feather>
+                            <i-feather name="trash-2" class="property-icon" (click)="deleteProperty(property.id!)"></i-feather>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createProperty" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Create New Property</h1>
+                <button type="button" #closeCreateProperty class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="createPropertyForm">
+                    <div class="my-2">
+                        <div class="mt-2 mb-4">
+                            <label class="form-label">Property Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <validation-message [FormControl]="createPropertyForm.controls['name']"></validation-message>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="createProperty()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProperty" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Edit Property</h1>
+                <button type="button" #closeEditProperty class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editPropertyForm">
+                    <div class="my-2">
+                        <div class="mt-2 mb-4">
+                            <label class="form-label">Property Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <validation-message [FormControl]="editPropertyForm.controls['name']"></validation-message>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="editProperty()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

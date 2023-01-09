@@ -1,0 +1,69 @@
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            Property Management System
+        </a>
+        <ul class="nav">
+            <app-translation></app-translation>
+        </ul>
+    </div>
+</nav>
+<div class="dashboard-container d-flex">
+    <div class="d-flex flex-column p-4 text-white bg-dark dashboard-sidebar">
+        <div class="d-flex justify-content-end text-white">
+            <i-feather name="arrow-left-circle"></i-feather>
+        </div>
+
+        <hr>
+
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="sidebar-item my-4" [routerLink]="['./']">
+                <i-feather name="trello"></i-feather>
+                <span class="sidebar-label align-bottom">Dashboard</span>
+            </li>
+            <li class="sidebar-item my-4" [routerLink]="['./request']">
+                <i-feather name="file-text"></i-feather>
+                <span class="sidebar-label align-bottom">Requests</span>
+            </li>
+            <li class="sidebar-item my-4" [routerLink]="['./booking']">
+                <i-feather name="clock"></i-feather>
+                <span class="sidebar-label align-bottom">Booking</span>
+            </li>
+            <li class="sidebar-item my-4" [routerLink]="['./transaction']">
+                <i-feather name="dollar-sign"></i-feather>
+                <span class="sidebar-label align-bottom">Transaction</span>
+            </li>
+            <li class="sidebar-item my-4" [routerLink]="['./feedback']">
+                <i-feather name="dollar-sign"></i-feather>
+                <span class="sidebar-label align-bottom">Feedback</span>
+            </li>
+        </ul>
+
+        <hr>
+
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>Chong</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="dashboard-content">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+
+<!-- 0199365593
+0166663629 -->

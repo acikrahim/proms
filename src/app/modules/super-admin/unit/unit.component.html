@@ -1,0 +1,126 @@
+<div class="container dashboard">
+    <div class="section-no-bg text-start">
+        <h2 class="mb-0">Units</h2>
+    </div>
+    <div class="section">
+        <div class="row mb-4">
+            <div class="col-12 col-md-6 col-lg-6">
+                <select [(ngModel)]="selectedProperty" (ngModelChange)="propertyChanged($event)" class="form-select form-select-lg">
+                    <option selected value="undefined" disabled hidden>Select property</option>
+                    <option *ngFor="let property of properties" [ngValue]="property">{{ property.name }}</option>
+                </select>
+            </div>
+            <div class="col-6 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-primary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#createUnit" [disabled]="!selectedProperty">
+                    Add 1 Unit
+                </button>
+            </div>
+            <div class="col-6 col-md-3 col-lg-3">
+                <button type="button" class="btn btn-primary btn-lg w-100" [disabled]="!selectedProperty">
+                    Add Bulk Units
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex justify-content-end items-end">
+                <button type="button" class="btn btn-danger btn-lg" *ngIf="checkedList.length" (click)="deleteUnits()">Delete Unit(s)</button>
+            </div>
+            <div id="tabular-table">
+                <div #table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createUnit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Create New Unit/Units</h1>
+                <button type="button" #closeCreateUnit class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-info btn-lg w-100" [disabled]="isSingle" (click)="isSingle = true">
+                            Add Single Unit
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-info btn-lg w-100" [disabled]="!isSingle" (click)="isSingle = false">
+                            Add Multiple Unit
+                        </button>
+                    </div>
+                </div>
+                <form [formGroup]="createSingleUnitForm" *ngIf="isSingle">
+                    <div class="my-2">
+                        <div class="mt-2 mb-4">
+                            <label class="form-label">Unit Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <validation-message [FormControl]="createSingleUnitForm.controls['name']"></validation-message>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="createMultipleUnitForm" *ngIf="!isSingle">
+                    <div class="my-2">
+                        <div class="mt-2 mb-4">
+                            <label class="form-label">Unit Base Name</label>
+                            <input type="text" class="form-control" formControlName="baseName">
+                            <validation-message [FormControl]="createMultipleUnitForm.controls['baseName']"></validation-message>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Start Number</label>
+                            <input type="text" class="form-control" formControlName="startNumber">
+                            <validation-message [FormControl]="createMultipleUnitForm.controls['startNumber']"></validation-message>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">End Number</label>
+                            <input type="text" class="form-control" formControlName="endNumber">
+                            <validation-message [FormControl]="createMultipleUnitForm.controls['endNumber']"></validation-message>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" *ngIf="isSingle">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="createUnit()">Save changes</button>
+            </div>
+            <div class="modal-footer" *ngIf="!isSingle">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="createUnit()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProperty" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Edit Unit</h1>
+                <button type="button" #closeEditUnit class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editUnitForm">
+                    <div class="my-2">
+                        <div class="mt-2 mb-4">
+                            <label class="form-label">Unit Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <validation-message [FormControl]="editUnitForm.controls['name']"></validation-message>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" (click)="deleteUnit()">Delete</button>
+                <button type="button" class="btn btn-primary" (click)="editUnit()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" #openEditUnit class="d-none" data-bs-toggle="modal" data-bs-target="#editProperty"></button>
