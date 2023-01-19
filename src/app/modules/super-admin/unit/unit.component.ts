@@ -40,6 +40,7 @@ export class UnitComponent implements OnInit {
     editUnitForm = this.form.group({
         name: ['', Validators.required]
     })
+    searchString: string = '';
 
     constructor(
         private form: FormBuilder,
@@ -112,6 +113,22 @@ export class UnitComponent implements OnInit {
             placeholder: "No matching records found",
         });
         document.getElementById('tabular-table')!.appendChild(this.table.nativeElement);
+    }
+
+    public search(): void {
+        if (this.searchString == '') {
+            this.tabulator!.clearFilter(true);
+        } else {
+            this.tabulator!.setFilter([
+                [
+                    {
+                        field: 'name',
+                        type: 'like',
+                        value: this.searchString
+                    }
+                ]
+            ])
+        }
     }
 
     private refreshProperties() {

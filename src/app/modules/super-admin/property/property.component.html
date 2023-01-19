@@ -1,32 +1,34 @@
 <div class="container dashboard">
     <div class="section-no-bg text-start">
-        <h2 class="mb-0">Property</h2>
+        <h2>Property</h2>
     </div>
-    <div class="section-no-bg py-0 text-end">
+    <div class="section-no-bg text-end">
         <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#createProperty" (click)="createPropertyForm.reset()">
             Add Property
         </button>
     </div>
     <div class="section">
         <div class="row">
-            <div *ngFor="let property of properties" class="col-12 col-md-12 col-lg-12 mb-4">
+            <div *ngFor="let property of properties" class="col-12 col-md-6 col-lg-6">
                 <div class="card property text-success" style="background-image: url('assets/img/svg/layers.svg');">
                     <div class="card-body">
                         <p class="property-name">{{property.name}}</p>
-                        <div class="row justify-content-end">
-                            <p class="col-10 property-info">
-                                Total Residence:
+                        <div class="row">
+                            <p class="col-3 property-info label">
+                                Capacity
                             </p>
-                            <p class="col-2 property-info">
-                                <strong>600 / 900</strong>
+                            <p class="col-9 property-info value">
+                                <strong>{{property.capacity}}</strong>
                             </p>
                         </div>
-                        <div class="row justify-content-end">
-                            <p class="col-10 property-info">
-                                Total Residence:
+                        <div class="row">
+                            <p class="col-3 property-info label">
+                                Address
                             </p>
-                            <p class="col-2 property-info">
-                                <strong>600 / 900</strong>
+                            <p class="col-9 property-info value">
+                                <strong>{{property.address1}}, {{property.address2}}</strong><br/>
+                                <strong>{{property.city}}, {{property.state}}</strong><br/>
+                                <strong>{{property.postcode}}</strong>
                             </p>
                         </div>
                         <div>

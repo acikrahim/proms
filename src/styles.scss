@@ -42,31 +42,46 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* dashboard */
 .dashboard-container {
     width: 100vw;
+    display: inline-flex;
 
     .dashboard-sidebar {
         height: calc(100vh - 48px);
-        width: 280px;
+        width: 18rem;
+        -webkit-transition: width 200ms ease-in;
+        -moz-transition: width 200ms ease-in;
+        -o-transition: width 200ms ease-in;
+        transition: width 200ms ease-in;
+
+        &.hide-label {
+            width: 4.2rem;
+            -webkit-transition: width 200ms ease-out;
+            -moz-transition: width 200ms ease-out;
+            -o-transition: width 200ms ease-out;
+            transition: width 200ms ease-out;
+        }
 
         .sidebar-item {
-            height: 32px;
-
+            height: 1.8rem;
+            padding: 1.6rem 0;
+            overflow: hidden;
+            
             i-feather {
-                height: 32px;
-                width: 32px;
+                height: 1.6rem;
+                width: 1.6rem;
             }
 
             .sidebar-label {
                 display: inline-table;
-                padding-left: 16px;
-                font-size: 18px;
+                padding-left: 1.6rem;
+                font-size: .9rem;
             }
         }
     }
 
     .dashboard-content {
-        width: calc(100% - 280px);
+        width: 100%;
         background-color: rgba(240, 244, 247, 0.5);
-        padding: 1rem;
+        padding: 1.6rem;
 
         .dashboard {
             margin: 0;
@@ -75,19 +90,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             .section {
                 background-color: rgb(255, 255, 255);
                 box-shadow: rgba(30, 30, 57, 0.02) 0 2px 5px -1px, rgb(0 0 0 / 5%) 0 1px 3px -1px;
-                padding: 1.5rem;
-                margin-bottom: .8rem;
+                padding: 1.2rem;
             }
 
             .section-no-bg {
-                padding: 1.5rem;
-                margin-bottom: 0;
+                margin-bottom: .8rem;
             }
 
         }
     }
 }
 
+/* tabulator styles */
 .tabulator {
     overflow: hidden;
     border: 0 !important;
@@ -104,6 +118,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             border: 0 !important;
             letter-spacing: 2px;
         }
+    }
+
+    .tabulator-table {
+        display: initial !important;
     }
     
     .tabulator-row {

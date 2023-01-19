@@ -3,33 +3,71 @@
         <a class="navbar-brand" href="#">
             Property Management System
         </a>
-        <ul class="nav">
-            <app-translation></app-translation>
-        </ul>
+        <ng-container *ngIf="!compactNavbar">
+            <ul class="nav">
+                <app-translation></app-translation>
+            </ul>
+        </ng-container>
+        
+        <ng-container *ngIf="compactNavbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+                aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-2">
+                        <li class="nav-item mb-3" [routerLink]="['./']">
+                            <i-feather name="trello"></i-feather>
+                            <span class="ms-2 align-bottom">Dashboard</span>
+                        </li>
+                        <li class="nav-item mb-3" [routerLink]="['./property']">
+                            <i-feather name="layers"></i-feather>
+                            <span class="ms-2 align-bottom">Property</span>
+                        </li>
+                        <li class="nav-item mb-3" [routerLink]="['./unit']">
+                            <i-feather name="home"></i-feather>
+                            <span class="ms-2 align-bottom">Unit</span>
+                        </li>
+                        <li class="nav-item mb-3" [routerLink]="['./facility']">
+                            <i-feather name="dribbble"></i-feather>
+                            <span class="ms-2 align-bottom">Facility</span>
+                        </li>
+                        <app-translation></app-translation>
+                    </ul>
+                </div>
+            </div>
+        </ng-container>
     </div>
 </nav>
-<div class="dashboard-container d-flex">
-    <div class="d-flex flex-column p-4 text-white bg-dark dashboard-sidebar">
-        <div class="d-flex justify-content-end text-white">
-            <i-feather name="arrow-left-circle"></i-feather>
+<div class="dashboard-container">
+    <div class="d-flex flex-column p-4 text-white bg-dark dashboard-sidebar" *ngIf="!compactNavbar" [ngClass]="{ 'hide-label': hideLabel }">
+        <div class="d-flex justify-content-end text-white" (click)="hideLabel = !hideLabel">
+            <i-feather [name]="hideLabel ? 'arrow-right-circle' : 'arrow-left-circle'"></i-feather>
         </div>
 
         <hr>
 
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="sidebar-item my-4" [routerLink]="['./']">
+            <li class="sidebar-item" [routerLink]="['./']">
                 <i-feather name="trello"></i-feather>
                 <span class="sidebar-label align-bottom">Dashboard</span>
             </li>
-            <li class="sidebar-item my-4" [routerLink]="['./property']">
+            <li class="sidebar-item" [routerLink]="['./property']">
                 <i-feather name="layers"></i-feather>
                 <span class="sidebar-label align-bottom">Property</span>
             </li>
-            <li class="sidebar-item my-4" [routerLink]="['./unit']">
+            <li class="sidebar-item" [routerLink]="['./unit']">
                 <i-feather name="home"></i-feather>
                 <span class="sidebar-label align-bottom">Unit</span>
             </li>
-            <li class="sidebar-item my-4" [routerLink]="['./facility']">
+            <li class="sidebar-item" [routerLink]="['./facility']">
                 <i-feather name="dribbble"></i-feather>
                 <span class="sidebar-label align-bottom">Facility</span>
             </li>

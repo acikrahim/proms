@@ -23,9 +23,15 @@ export interface ModalContent {
 
 export interface Property {
     createdAt?: string;
+    updatedAt?: string;
     id?: Number;
     name: string;
-    updatedAt?: string;
+    address1?: string | undefined;
+    address2?: string | undefined;
+    city?: string | undefined;
+    state?: string | undefined;
+    postcode?: string | undefined;
+    capacity?: Number | undefined;
 }
 
 export interface TemplateRefObj {

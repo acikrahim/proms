@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FeatherModule } from 'angular-feather';
-import { ArrowRightCircle, ArrowLeftCircle, Dribbble, Edit, Home, Layers, Trash2, Trello } from 'angular-feather/icons';
+import { ArrowRightCircle, ArrowLeftCircle, Dribbble, Edit, Home, Layers, Search, Trash2, Trello } from 'angular-feather/icons';
 
 import { TranslationModule, ValidationMessageModule } from "src/app/shared";
 
@@ -22,7 +22,7 @@ const routes: Routes = [
         component: SuperAdminComponent,
         children: [
             {
-                path: 'dashboard',
+                path: '',
                 component: DashboardSuperAdminComponent
             },
             {
@@ -57,6 +57,7 @@ const routes: Routes = [
             Edit,
             Home,
             Layers,
+            Search,
             Trash2,
             Trello
         }),
